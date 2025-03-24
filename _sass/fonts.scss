@@ -1,0 +1,44 @@
+// It is the default font.
+/* amiko-regular - latin */
+@font-face {
+    font-family: 'Amiko';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/assets/fonts/amiko-v5-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('/assets/fonts/amiko-v5-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/assets/fonts/amiko-v5-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('/assets/fonts/amiko-v5-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('/assets/fonts/amiko-v5-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('/assets/fonts/amiko-v5-latin-regular.svg#Amiko') format('svg'); /* Legacy iOS */
+  }
+
+// It is the font of the logo.
+/* bungee-shade-regular - latin */
+@font-face {
+    font-family: 'Bungee Shade';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/assets/fonts/bungee-shade-v6-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('/assets/fonts/bungee-shade-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/assets/fonts/bungee-shade-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('/assets/fonts/bungee-shade-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('/assets/fonts/bungee-shade-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('/assets/fonts/bungee-shade-v6-latin-regular.svg#BungeeShade') format('svg'); /* Legacy iOS */
+}
+
+/* alata-regular - latin */
+// It is used as the font for all headers and headlines.
+@font-face {
+    font-family: 'Alata';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/assets/fonts/alata-v2-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('/assets/fonts/alata-v2-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/assets/fonts/alata-v2-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('/assets/fonts/alata-v2-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('/assets/fonts/alata-v2-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('/assets/fonts/alata-v2-latin-regular.svg#Alata') format('svg'); /* Legacy iOS */
+}

@@ -1,0 +1,36 @@
+
+<div id="sidebar" class="col-md-12 col-lg-4 d-print-none">
+    <p class="h5 text-muted text-right">Neuste Beiträge</p>
+    <ul class="list-unstyled text-right">
+        {% for post in site.posts limit:5 %}
+            <li>
+                <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p class="h5 text-muted text-right">Kategorien</p>
+    <ul class="list-unstyled text-right">
+        <li>
+            <a href="/development/">DEVELOPMENT</a>
+        </li>
+        <li>
+            <a href="/operations/">OPERATIONS</a>
+        </li>
+        <li>
+            <a href="/music/">MUSIC</a>
+        </li>
+    </ul>
+    {% if include.category %}
+        <p class="h5 text-muted text-right">Posts in <span class="text-uppercase font-weight-light">{{ include.category }}</span></p>
+        <ul class="list-unstyled text-right">
+            {% for post in site.categories[include.category] limit:5 %}
+                <li>
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="text-right">
+        <a href="/all-posts/">Archive</a>
+    </div>
+</div>

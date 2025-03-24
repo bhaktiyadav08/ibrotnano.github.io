@@ -1,0 +1,9 @@
+---
+layout: none
+permalink: .well-known/mta-sts.txt
+---
+
+version: STSv1
+mode: enforce
+max_age: 10368000
+mx: mail.3h-co.de

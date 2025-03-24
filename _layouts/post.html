@@ -1,0 +1,22 @@
+{% include head.html excerpt=page.excerpt title=page.title author=page.author %}
+<body>
+  {% include navigation.html %}
+  {% include header.html %}
+  <main class="container">
+    <div class="row">
+      <article class="col-md-12 col-lg-8">
+        <div class="table-responsive-md">
+          {{ content }}
+        </div>
+      </article>
+      {% include sidebar.html category=page.category %}
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+          <span class="text-right text-muted">
+            <small>{{ page.content | number_of_words }} Worte</small>
+          </span>
+      </div>
+    </div>
+  </main>
+  {% include footer.html %}

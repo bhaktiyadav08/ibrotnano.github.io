@@ -1,0 +1,7 @@
+---
+layout: none
+permalink: .well-known/security.txt
+---
+
+Contact: marcel@3h-co.de
+Preferred-Languages: de, en

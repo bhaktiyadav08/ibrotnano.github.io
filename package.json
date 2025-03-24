@@ -1,0 +1,38 @@
+{
+    "name": "3h-co.de",
+    "version": "4.7.11",
+    "dependencies": {
+        "@fortawesome/fontawesome-free": ">=5.15.3",
+        "jquery": ">=3.6.0",
+        "jquery.easing": ">=1.4.1",
+        "@popperjs/core": ">=2.9.2"
+    },
+    "devDependencies": {
+        "copy-files-from-to": ">=3.2.0"
+    },
+    "scripts": {
+        "postinstall": "copy-files-from-to"
+    },
+    "copyFiles": [
+        {
+            "from": "node_modules/@fortawesome/fontawesome-free/scss/*",
+            "to": "_sass"
+        },
+        {
+            "from": "node_modules/@fortawesome/fontawesome-free/webfonts/*",
+            "to": "webfonts"
+        },
+        {
+            "from": "node_modules/jquery/dist/jquery.min.js",
+            "to": "assets/javascripts/jquery.min.js"
+        },
+        {
+            "from": "node_modules/jquery.easing/jquery.easing.min.js",
+            "to": "assets/javascripts/jquery.easing.min.js"
+        },
+        {
+            "from": "node_modules/@popperjs/core/dist/umd/popper.min.js",
+            "to": "assets/javascripts/popper.min.js"
+        }
+    ]
+}
