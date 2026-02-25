@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'de' }}">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+    <meta name="description"
+        content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}" />
+    {% seo %}
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}"
+        href="{{ '/feed.xml' | relative_url }}" />
+</head>
+
+<body>
+    <div class="site-shell">
+        <header class="site-header">
+            <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+            <nav class="site-nav">
+                <a href="{{ '/' | relative_url }}">Home</a>
+                <a href="{{ '/archive/' | relative_url }}">Archiv</a>
+                <a href="{{ '/categories/' | relative_url }}">Kategorien</a>
+            </nav>
+        </header>
+
+        <main class="content">
+            {{ content }}
+        </main>
+
+        <footer class="site-footer">
+            <p>{{ site.description }}</p>
+        </footer>
+    </div>
+
+    <script defer src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+
+</html>
