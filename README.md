@@ -1,5 +1,10 @@
 # Jekyll Blog (Monokai Dark)
 
+## TODOs:
+
+- [ ] Fix Docker Compose
+- [ ] Fix Task to start Docker Compose
+
 Dieses Repository enthält ein vollständiges Tech-Blog, optimiert für GitHub Pages.
 
 ## Features
@@ -25,6 +30,24 @@ bundle exec jekyll serve
 ```
 
 Dann öffnen: `http://127.0.0.1:4000`
+
+## Lokal starten ohne Ruby (Docker)
+
+Voraussetzungen: Docker Desktop
+
+```bash
+docker compose up
+```
+
+Dann öffnen: `http://127.0.0.1:4000`
+
+Stoppen:
+
+```bash
+docker compose down
+```
+
+Hinweis: Live-Reload ist aktiv, Änderungen an Dateien werden automatisch neu gebaut.
 
 ## Auf GitHub Pages veröffentlichen
 

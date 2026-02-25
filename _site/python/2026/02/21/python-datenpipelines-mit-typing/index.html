@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Datenpipelines in Python sauber typisieren · Code & Notes</title>
+    <meta name="description"
+        content="Kurzer Leitfaden, wie kleine Datenpipelines in Python mit Typannotationen wartbarer werden.Beispielfrom dataclasses import dataclass@dataclassclass Event:   ..." />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Datenpipelines in Python sauber typisieren | Code &amp; Notes</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Datenpipelines in Python sauber typisieren" />
+<meta name="author" content="Dein Name" />
+<meta property="og:locale" content="de" />
+<meta name="description" content="Kurzer Leitfaden, wie kleine Datenpipelines in Python mit Typannotationen wartbarer werden. Beispiel from dataclasses import dataclass @dataclass class Event: id: str kind: str value: float def normalize(events: list[Event]) -&gt; list[Event]: if not events: return [] max_value = max(event.value for event in events) or 1 return [Event(event.id, event.kind, event.value / max_value) for event in events] So bleibt die Verarbeitung nachvollziehbar, selbst wenn das Projekt wächst." />
+<meta property="og:description" content="Kurzer Leitfaden, wie kleine Datenpipelines in Python mit Typannotationen wartbarer werden. Beispiel from dataclasses import dataclass @dataclass class Event: id: str kind: str value: float def normalize(events: list[Event]) -&gt; list[Event]: if not events: return [] max_value = max(event.value for event in events) or 1 return [Event(event.id, event.kind, event.value / max_value) for event in events] So bleibt die Verarbeitung nachvollziehbar, selbst wenn das Projekt wächst." />
+<link rel="canonical" href="http://0.0.0.0:4000/python/2026/02/21/python-datenpipelines-mit-typing/" />
+<meta property="og:url" content="http://0.0.0.0:4000/python/2026/02/21/python-datenpipelines-mit-typing/" />
+<meta property="og:site_name" content="Code &amp; Notes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-02-21T09:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Datenpipelines in Python sauber typisieren" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Dein Name" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Dein Name"},"dateModified":"2026-02-21T09:00:00+01:00","datePublished":"2026-02-21T09:00:00+01:00","description":"Kurzer Leitfaden, wie kleine Datenpipelines in Python mit Typannotationen wartbarer werden. Beispiel from dataclasses import dataclass @dataclass class Event: id: str kind: str value: float def normalize(events: list[Event]) -&gt; list[Event]: if not events: return [] max_value = max(event.value for event in events) or 1 return [Event(event.id, event.kind, event.value / max_value) for event in events] So bleibt die Verarbeitung nachvollziehbar, selbst wenn das Projekt wächst.","headline":"Datenpipelines in Python sauber typisieren","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/python/2026/02/21/python-datenpipelines-mit-typing/"},"url":"http://0.0.0.0:4000/python/2026/02/21/python-datenpipelines-mit-typing/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="alternate" type="application/atom+xml" title="Code & Notes"
+        href="/feed.xml" />
+</head>
+
+<body>
+    <div class="site-shell">
+        <header class="site-header">
+            <a class="brand" href="/">Code & Notes</a>
+            <nav class="site-nav">
+                <a href="/">Home</a>
+                <a href="/archive/">Archiv</a>
+                <a href="/categories/">Kategorien</a>
+            </nav>
+        </header>
+
+        <main class="content">
+            <article class="post">
+    <header class="post-header">
+        <h1>Datenpipelines in Python sauber typisieren</h1>
+        <p class="post-meta">
+            <time datetime="2026-02-21T09:00:00+01:00">21.02.2026</time>
+            
+            ·
+            
+            <a class="tag" href="/categories-python">#python</a>
+            
+            
+        </p>
+    </header>
+
+    <section class="post-content">
+        <p>Kurzer Leitfaden, wie kleine Datenpipelines in Python mit Typannotationen wartbarer werden.</p>
+
+<h2 id="beispiel">Beispiel</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="o">@</span><span class="n">dataclass</span>
+<span class="k">class</span> <span class="nc">Event</span><span class="p">:</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">value</span><span class="p">:</span> <span class="nb">float</span>
+
+<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">events</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">events</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="n">max_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">Event</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="nb">id</span><span class="p">,</span> <span class="n">event</span><span class="p">.</span><span class="n">kind</span><span class="p">,</span> <span class="n">event</span><span class="p">.</span><span class="n">value</span> <span class="o">/</span> <span class="n">max_value</span><span class="p">)</span> <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>So bleibt die Verarbeitung nachvollziehbar, selbst wenn das Projekt wächst.</p>
+
+    </section>
+</article>
+        </main>
+
+        <footer class="site-footer">
+            <p>Technischer Blog mit Fokus auf Code, Architektur und Diagramme.</p>
+        </footer>
+    </div>
+
+    <script defer src="/assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://0.0.0.0:4000/meta/setup/2026/02/20/willkommen-im-blog/</loc>
+<lastmod>2026-02-20T10:00:00+01:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/python/2026/02/21/python-datenpipelines-mit-typing/</loc>
+<lastmod>2026-02-21T09:00:00+01:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/devops/2026/02/22/devops-ci-cd-fuer-kleine-teams/</loc>
+<lastmod>2026-02-22T10:15:00+01:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/architektur/2026/02/23/architektur-entscheidungen-mit-adrs/</loc>
+<lastmod>2026-02-23T08:30:00+01:00</lastmod>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/archive/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/categories/</loc>
+</url>
+<url>
+<loc>http://0.0.0.0:4000/</loc>
+</url>
+</urlset>

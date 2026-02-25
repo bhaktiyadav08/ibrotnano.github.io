@@ -1,0 +1,479 @@
+--- --- $bg: #272822;
+$bg-soft: #2d2e27;
+$text: #f8f8f2;
+$muted: #a6a89f;
+$accent: #a6e22e;
+$accent-soft: #66d9ef;
+$border: #49483e;
+$code-bg: #1e1f1c;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: $bg;
+    color: $text;
+    line-height: 1.65;
+}
+
+a {
+    color: $accent-soft;
+    text-decoration: none;
+
+    &:hover {
+        color: $accent;
+    }
+}
+
+.site-shell {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid $border;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.brand {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $text;
+}
+
+.site-nav {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.content h1,
+.content h2,
+.content h3 {
+    line-height: 1.25;
+    color: $text;
+}
+
+.content h1 {
+    margin-top: 0.4rem;
+}
+
+.content ul {
+    padding-left: 1.2rem;
+}
+
+.content li {
+    margin: 0.55rem 0;
+}
+
+.post,
+.content>ul>li,
+.content blockquote {
+    background: $bg-soft;
+    border: 1px solid $border;
+    border-radius: 10px;
+}
+
+.content>ul>li {
+    list-style: none;
+    margin-left: -1.2rem;
+    padding: 0.9rem 1rem;
+}
+
+.post {
+    padding: 1.1rem 1.1rem 0.4rem;
+}
+
+.post-meta {
+    color: $muted;
+    margin-top: -0.3rem;
+    margin-bottom: 1.2rem;
+}
+
+.tag {
+    color: $accent;
+    font-weight: 600;
+}
+
+.category-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 0.3rem 0 1.2rem;
+}
+
+.category-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.32rem 0.62rem;
+    border-radius: 999px;
+    border: 1px solid $border;
+    background: $bg-soft;
+    color: $text;
+    font-size: 0.92rem;
+}
+
+.category-pill span {
+    color: $muted;
+}
+
+.back-to-top {
+    margin: 0.8rem 0 0.2rem;
+    font-size: 0.9rem;
+}
+
+.back-to-top a {
+    color: $accent;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
+    font-size: 0.95em;
+}
+
+pre,
+.highlight {
+    background: $code-bg;
+    border: 1px solid $border;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+pre {
+    padding: 0.9rem;
+}
+
+.highlight pre {
+    margin: 0;
+    padding: 0.9rem;
+    border: 0;
+}
+
+.code-block-wrap {
+    position: relative;
+}
+
+.code-block-wrap .copy-code-btn {
+    position: absolute;
+    right: 0.55rem;
+    top: 0.55rem;
+    z-index: 2;
+    border: 1px solid $border;
+    background: $bg-soft;
+    color: $text;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    padding: 0.18rem 0.52rem;
+    cursor: pointer;
+}
+
+.code-block-wrap .copy-code-btn:hover {
+    color: $accent;
+    border-color: $accent;
+}
+
+blockquote {
+    margin: 1rem 0;
+    padding: 0.8rem 1rem;
+    border-left: 3px solid $accent;
+}
+
+.site-footer {
+    border-top: 1px solid $border;
+    margin-top: 2rem;
+    padding-top: 0.7rem;
+    color: $muted;
+}
+
+/* Rouge: Monokai-like */
+.highlight .hll {
+    background-color: #49483e
+}
+
+.highlight {
+    color: #f8f8f2;
+    background-color: #272822
+}
+
+.highlight .c {
+    color: #75715e
+}
+
+.highlight .err {
+    color: #960050;
+    background-color: #1e0010
+}
+
+.highlight .k {
+    color: #66d9ef
+}
+
+.highlight .l {
+    color: #ae81ff
+}
+
+.highlight .n {
+    color: #f8f8f2
+}
+
+.highlight .o {
+    color: #f92672
+}
+
+.highlight .p {
+    color: #f8f8f2
+}
+
+.highlight .ch {
+    color: #75715e
+}
+
+.highlight .cm {
+    color: #75715e
+}
+
+.highlight .cp {
+    color: #75715e
+}
+
+.highlight .cpf {
+    color: #75715e
+}
+
+.highlight .c1 {
+    color: #75715e
+}
+
+.highlight .cs {
+    color: #75715e
+}
+
+.highlight .gd {
+    color: #f92672
+}
+
+.highlight .ge {
+    font-style: italic
+}
+
+.highlight .gi {
+    color: #a6e22e
+}
+
+.highlight .gs {
+    font-weight: bold
+}
+
+.highlight .gu {
+    color: #75715e
+}
+
+.highlight .kc {
+    color: #66d9ef
+}
+
+.highlight .kd {
+    color: #66d9ef
+}
+
+.highlight .kn {
+    color: #f92672
+}
+
+.highlight .kp {
+    color: #66d9ef
+}
+
+.highlight .kr {
+    color: #66d9ef
+}
+
+.highlight .kt {
+    color: #66d9ef
+}
+
+.highlight .ld {
+    color: #e6db74
+}
+
+.highlight .m {
+    color: #ae81ff
+}
+
+.highlight .s {
+    color: #e6db74
+}
+
+.highlight .na {
+    color: #a6e22e
+}
+
+.highlight .nb {
+    color: #f8f8f2
+}
+
+.highlight .nc {
+    color: #a6e22e
+}
+
+.highlight .no {
+    color: #66d9ef
+}
+
+.highlight .nd {
+    color: #a6e22e
+}
+
+.highlight .ni {
+    color: #f8f8f2
+}
+
+.highlight .ne {
+    color: #a6e22e
+}
+
+.highlight .nf {
+    color: #a6e22e
+}
+
+.highlight .nl {
+    color: #f8f8f2
+}
+
+.highlight .nn {
+    color: #f8f8f2
+}
+
+.highlight .nx {
+    color: #a6e22e
+}
+
+.highlight .py {
+    color: #f8f8f2
+}
+
+.highlight .nt {
+    color: #f92672
+}
+
+.highlight .nv {
+    color: #f8f8f2
+}
+
+.highlight .ow {
+    color: #f92672
+}
+
+.highlight .w {
+    color: #f8f8f2
+}
+
+.highlight .mb {
+    color: #ae81ff
+}
+
+.highlight .mf {
+    color: #ae81ff
+}
+
+.highlight .mh {
+    color: #ae81ff
+}
+
+.highlight .mi {
+    color: #ae81ff
+}
+
+.highlight .mo {
+    color: #ae81ff
+}
+
+.highlight .sa {
+    color: #e6db74
+}
+
+.highlight .sb {
+    color: #e6db74
+}
+
+.highlight .sc {
+    color: #e6db74
+}
+
+.highlight .dl {
+    color: #e6db74
+}
+
+.highlight .sd {
+    color: #e6db74
+}
+
+.highlight .s2 {
+    color: #e6db74
+}
+
+.highlight .se {
+    color: #ae81ff
+}
+
+.highlight .sh {
+    color: #e6db74
+}
+
+.highlight .si {
+    color: #e6db74
+}
+
+.highlight .sx {
+    color: #e6db74
+}
+
+.highlight .sr {
+    color: #e6db74
+}
+
+.highlight .s1 {
+    color: #e6db74
+}
+
+.highlight .ss {
+    color: #e6db74
+}
+
+.highlight .bp {
+    color: #f8f8f2
+}
+
+.highlight .fm {
+    color: #a6e22e
+}
+
+.highlight .vc {
+    color: #f8f8f2
+}
+
+.highlight .vg {
+    color: #f8f8f2
+}
+
+.highlight .vi {
+    color: #f8f8f2
+}
+
+.highlight .vm {
+    color: #f8f8f2
+}
+
+.highlight .il {
+    color: #ae81ff
+}
