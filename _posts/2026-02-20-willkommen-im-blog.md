@@ -6,6 +6,8 @@ categories: [meta, setup]
 
 Dies ist der erste Eintrag. Dieses Blog unterstützt **Syntax Highlighting** und **Mermaid-Diagramme**.
 
+Haha!!
+
 ## Beispiel: Code
 
 ```python

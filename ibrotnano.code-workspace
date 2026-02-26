@@ -1,0 +1,26 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "[scss]": {
+      "editor.formatOnSave": false
+    },
+    "terminal.integrated.profiles.windows": {
+      "WorkspacePwsh": {
+        "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+        "args": [
+          "-NoExit",
+          "-Command",
+          "cd $env:WORKSPACE_ROOT;"
+        ],
+        "env": {
+          "WORKSPACE_ROOT": "${workspaceFolder}"
+        }
+      }
+    },
+    "terminal.integrated.defaultProfile.windows": "WorkspacePwsh"
+  }
+}
