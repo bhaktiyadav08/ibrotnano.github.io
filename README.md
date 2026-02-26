@@ -2,8 +2,9 @@
 
 ## TODOs:
 
-- [ ] Fix Docker Compose
-- [ ] Fix Task to start Docker Compose
+- [x] Fix Docker Compose
+- [x] Fix Task to start Docker Compose
+- [ ] Layout funktioniert nicht
 
 Dieses Repository enthält ein vollständiges Tech-Blog, optimiert für GitHub Pages.
 
@@ -36,7 +37,7 @@ Dann öffnen: `http://127.0.0.1:4000`
 Voraussetzungen: Docker Desktop
 
 ```bash
-docker compose up
+docker compose up -d
 ```
 
 Dann öffnen: `http://127.0.0.1:4000`
