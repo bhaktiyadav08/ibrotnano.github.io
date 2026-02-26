@@ -1,18 +1,16 @@
-title: Code & Notes
-description: Technischer Blog mit Fokus auf Code, Architektur und Diagramme.
-url: ""
+title: iBrotNano
+description: Just a blog about the meaning of life, the universe, and everything.
+url: "https://ibrotnano.github.io"
 baseurl: ""
 timezone: Europe/Berlin
 lang: de
-author: Dein Name
-
-twitter:
-  username: ""
-  card: summary_large_image
+author: Marcel Melzig
 
 social:
-  name: Code & Notes
-  links: []
+  name: iBrotNano
+  links:
+    - https://github.com/iBrotNano
+    - https://www.linkedin.com/in/marcel-melzig-0aa538ab/
 
 markdown: kramdown
 kramdown:
@@ -47,3 +45,7 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - docker-compose.yml
+  - .gitignore
+  - _site
+  - ibrotnano.code-workspace
