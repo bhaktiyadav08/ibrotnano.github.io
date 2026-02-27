@@ -1,13 +1,16 @@
 --- 
 --- 
-$bg: #272822;
-$bg-soft: #2d2e27;
-$text: #f8f8f2;
-$muted: #a6a89f;
-$accent: #a6e22e;
-$accent-soft: #66d9ef;
-$border: #49483e;
-$code-bg: #1e1f1c;
+$bg: #181a20; // Terminal dark
+$bg-soft: #23272e; // Slightly lighter for cards
+$text: #b6ffb0; // Terminal green
+$muted: #6fcf97; // Muted green
+$accent: #39ff14; // Neon green
+$accent-soft: #ff00cc; // Magenta accent
+$border: #2e2e38; // Subtle border
+$code-bg: #101214; // Even darker for code
+
+// Extra accent for hover
+$accent-hover: #00fff7;
 
 * {
     box-sizing: border-box;
@@ -15,7 +18,7 @@ $code-bg: #1e1f1c;
 
 body {
     margin: 0;
-    font-family: Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Liberation Mono', monospace;
     background: $bg;
     color: $text;
     line-height: 1.65;
@@ -24,9 +27,11 @@ body {
 a {
     color: $accent-soft;
     text-decoration: none;
+    transition: color 0.2s;
 
     &:hover {
-        color: $accent;
+        color: $accent-hover;
+        text-shadow: 0 0 6px $accent-hover;
     }
 }
 
@@ -44,12 +49,16 @@ a {
     border-bottom: 1px solid $border;
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
+    box-shadow: 0 2px 12px 0 rgba(57,255,20,0.04);
 }
 
 .brand {
     font-size: 1.1rem;
     font-weight: 700;
-    color: $text;
+    color: $accent;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 8px $accent, 0 0 2px $accent-soft;
 }
 
 .site-nav {
@@ -59,10 +68,12 @@ a {
 }
 
 .content h1,
-.content h2,
-.content h3 {
+    .content h2,
+    .content h3 {
     line-height: 1.25;
-    color: $text;
+    color: $accent;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    text-shadow: 0 0 4px $accent, 0 0 2px $accent-soft;
 }
 
 .content h1 {
@@ -97,13 +108,15 @@ a {
 
 .post-meta {
     color: $muted;
+    font-family: 'Fira Mono', 'Consolas', monospace;
     margin-top: -0.3rem;
     margin-bottom: 1.2rem;
 }
 
 .tag {
-    color: $accent;
+    color: $accent-soft;
     font-weight: 600;
+    text-shadow: 0 0 4px $accent-soft;
 }
 
 .category-overview {
@@ -121,7 +134,10 @@ a {
     border-radius: 999px;
     border: 1px solid $border;
     background: $bg-soft;
-    color: $text;
+    color: $accent;
+    border: 1px solid $accent-soft;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    text-shadow: 0 0 2px $accent-soft;
     font-size: 0.92rem;
 }
 
@@ -139,16 +155,20 @@ a {
 }
 
 code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
-    font-size: 0.95em;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Liberation Mono', monospace;
+    font-size: 0.98em;
+    color: $accent-hover;
+    border-radius: 4px;
+    padding: 0.1em 0.3em;
 }
 
 pre,
-.highlight {
+    .highlight {
     background: $code-bg;
-    border: 1px solid $border;
+    border: 1px solid $accent-soft;
     border-radius: 8px;
     overflow-x: auto;
+    box-shadow: 0 0 16px 0 $accent-soft;
 }
 
 pre {
@@ -170,13 +190,20 @@ pre {
     right: 0.55rem;
     top: 0.55rem;
     z-index: 2;
-    border: 1px solid $border;
+    border: 1px solid $accent-soft;
     background: $bg-soft;
-    color: $text;
+    color: $accent-soft;
     border-radius: 6px;
     font-size: 0.78rem;
     padding: 0.18rem 0.52rem;
     cursor: pointer;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    text-shadow: 0 0 2px $accent-soft;
+    transition: background 0.2s, color 0.2s;
+    &:hover {
+        background: $accent-soft;
+        color: $bg;
+    }
 }
 
 .code-block-wrap .copy-code-btn:hover {
