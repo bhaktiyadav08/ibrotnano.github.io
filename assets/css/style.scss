@@ -35,21 +35,31 @@ a {
     }
 }
 
+h1 {
+    font-size: 1.4rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 1.1rem;
+}
+
 .site-shell {
     max-width: 920px;
-    margin: 0 auto;
+    margin: 1rem auto;
     padding: 1.5rem 1rem 3rem;
     position: relative;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.7);
-    //border-left: 1px solid $accent-soft;
-    //border-right: 1px solid $accent-soft;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid $accent-soft;
     overflow-x: auto;
-    //box-shadow: 0 0 16px 0 $accent-soft;
+    box-shadow: 0 0 16px 0 $accent-soft;
     backdrop-filter: blur(12px); 
     -webkit-backdrop-filter: blur(12px);
-    //border-bottom-left-radius: 3px;
-    //border-bottom-right-radius: 3px;
+    border-radius: 12px;
 }
 
 .site-header {
@@ -85,7 +95,6 @@ a {
     color: $accent;
     font-family: 'Fira Mono', 'Consolas', monospace;
     font-weight: 400;
-    text-shadow: 0 0 4px $accent, 0 0 2px $accent-soft;
 }
 
 .content h1 {
@@ -103,8 +112,7 @@ a {
 .post,
 .content>ul>li,
 .content blockquote {
-    background: $bg-soft;
-    border: 1px solid $border;
+    border: 1px solid $accent-soft;
     border-radius: 10px;
 }
 
@@ -128,7 +136,6 @@ a {
 .tag {
     color: $accent-soft;
     font-weight: 600;
-    text-shadow: 0 0 4px $accent-soft;
 }
 
 .category-overview {
@@ -149,7 +156,6 @@ a {
     color: $accent;
     border: 1px solid $accent-soft;
     font-family: 'Fira Mono', 'Consolas', monospace;
-    text-shadow: 0 0 2px $accent-soft;
     font-size: 0.92rem;
 }
 
@@ -164,7 +170,6 @@ a {
     color: $accent;
     font-family: 'Fira Mono', 'Consolas', monospace;
     letter-spacing: 0.04em;
-    text-shadow: 0 0 8px $accent, 0 0 2px $accent-soft;
     position: relative;
 }
 
@@ -202,7 +207,6 @@ pre,
     border: 1px solid $accent;
     border-radius: 8px;
     overflow-x: auto;
-    box-shadow: 0 0 16px 0 $accent;
 }
 
 pre {
@@ -264,7 +268,6 @@ blockquote {
 
 .highlight {
     color: #f8f8f2;
-    background-color: #272822
 }
 
 .highlight .c {
