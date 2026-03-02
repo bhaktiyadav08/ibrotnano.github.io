@@ -11,14 +11,19 @@
                 </linearGradient>
             </defs>
 
-            <path fill="url(#neonGradient)">
-                <animate attributeName="d" dur="18s" repeatCount="indefinite" values="
-                        M0,120 C300,200 900,40 1200,120 V200 H0 Z;
-                        M0,140 C300,180 900,20 1200,100 V200 H0 Z;
-                        M0,110 C300,210 900,30 1200,130 V200 H0 Z;
-                        M0,120 C300,200 900,40 1200,120 V200 H0 Z
-                    " />
-            </path>
+            <ellipse cx="600" cy="240" rx="760" ry="148" fill="url(#neonGradient)">
+                <animate attributeName="cy" dur="18s" repeatCount="indefinite" values="240;234;246;240" />
+            </ellipse>
+
+            <ellipse cx="600" cy="238" rx="780" ry="162" fill="none" stroke="rgba(120, 245, 255, 0.42)"
+                stroke-width="16">
+                <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0.35;0.62;0.35" />
+            </ellipse>
+
+            <ellipse cx="600" cy="238" rx="805" ry="178" fill="none" stroke="rgba(255, 126, 214, 0.28)"
+                stroke-width="24">
+                <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0.18;0.42;0.18" />
+            </ellipse>
         </svg>
     </div>
 </div>
