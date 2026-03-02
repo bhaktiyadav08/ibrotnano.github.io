@@ -553,6 +553,23 @@ blockquote {
     pointer-events: none;
 }
 
+.bg-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.nebula-layer {
+    z-index: 0;
+    opacity: 0.8;
+}
+
+.constellation-layer {
+    z-index: 1;
+    opacity: 0.85;
+}
+
 /* --- Particles --- */
 .particle {
   position: absolute;
@@ -609,6 +626,7 @@ blockquote {
   width: 100%;
   height: 20vh;
   overflow: hidden;
+    z-index: 2;
 }
 
 .wave-wrap svg {
