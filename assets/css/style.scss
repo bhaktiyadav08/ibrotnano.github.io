@@ -41,6 +41,15 @@ a {
     padding: 1.5rem 1rem 3rem;
     position: relative;
     z-index: 1;
+    background: rgba(0, 0, 0, 0.7);
+    border-left: 1px solid $accent-soft;
+    border-right: 1px solid $accent-soft;
+    overflow-x: auto;
+    box-shadow: 0 0 16px 0 $accent-soft;
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .site-header {
@@ -190,10 +199,10 @@ code {
 pre,
     .highlight {
     background: $code-bg;
-    border: 1px solid $accent-soft;
+    border: 1px solid $accent;
     border-radius: 8px;
     overflow-x: auto;
-    box-shadow: 0 0 16px 0 $accent-soft;
+    box-shadow: 0 0 16px 0 $accent;
 }
 
 pre {
@@ -215,24 +224,23 @@ pre {
     right: 0.55rem;
     top: 0.55rem;
     z-index: 2;
-    border: 1px solid $accent-soft;
+    border: 1px solid $accent;
     background: $bg-soft;
-    color: $accent-soft;
+    color: $accent;
     border-radius: 6px;
     font-size: 0.78rem;
     padding: 0.18rem 0.52rem;
     cursor: pointer;
     font-family: 'Fira Mono', 'Consolas', monospace;
-    text-shadow: 0 0 2px $accent-soft;
+    text-shadow: 0 0 2px $accent;
     transition: background 0.2s, color 0.2s;
     &:hover {
-        background: $accent-soft;
-        color: $bg;
+        background: $accent;
     }
 }
 
 .code-block-wrap .copy-code-btn:hover {
-    color: $accent;
+    color: $bg;
     border-color: $accent;
 }
 
