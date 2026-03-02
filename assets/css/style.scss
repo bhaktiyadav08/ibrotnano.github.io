@@ -42,14 +42,14 @@ a {
     position: relative;
     z-index: 1;
     background: rgba(0, 0, 0, 0.7);
-    border-left: 1px solid $accent-soft;
-    border-right: 1px solid $accent-soft;
+    //border-left: 1px solid $accent-soft;
+    //border-right: 1px solid $accent-soft;
     overflow-x: auto;
-    box-shadow: 0 0 16px 0 $accent-soft;
+    //box-shadow: 0 0 16px 0 $accent-soft;
     backdrop-filter: blur(12px); 
     -webkit-backdrop-filter: blur(12px);
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    //border-bottom-left-radius: 3px;
+    //border-bottom-right-radius: 3px;
 }
 
 .site-header {
@@ -633,5 +633,5 @@ blockquote {
   width: 100%;
   height: 100%;
   display: block;
-    filter: drop-shadow(0 0 28px rgba(0, 255, 255, 0.7)) drop-shadow(0 0 84px rgba(255, 107, 203, 0.14));
+    filter: drop-shadow(0 0 28px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 54px rgba(255, 107, 203, 0.5));
 }
