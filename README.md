@@ -1,11 +1,5 @@
 # Jekyll Blog (Monokai Dark)
 
-## TODOs:
-
-- [x] Fix Docker Compose
-- [x] Fix Task to start Docker Compose
-- [ ] Layout funktioniert nicht
-
 Dieses Repository enthält ein vollständiges Tech-Blog, optimiert für GitHub Pages.
 
 ## Features

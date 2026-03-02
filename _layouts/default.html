@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
     <div class="site-shell">
         <header class="site-header">
             <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}<span class="blinking-cursor">█</span></a>
@@ -33,6 +34,7 @@
         </footer>
     </div>
 
+    {% include background.html %}
     <script defer src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 

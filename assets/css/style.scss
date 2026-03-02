@@ -39,6 +39,8 @@ a {
     max-width: 920px;
     margin: 0 auto;
     padding: 1.5rem 1rem 3rem;
+    position: relative;
+    z-index: 1;
 }
 
 .site-header {
@@ -528,4 +530,82 @@ blockquote {
 
 .highlight .il {
     color: #ae81ff
+}
+
+/* Backround and particles */
+
+.scene {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: radial-gradient(circle at 20% 0%, #0a0a14 0, #000 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --- Particles --- */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0, #0ff 40%, transparent 70%);
+  box-shadow:
+    0 0 8px rgba(0, 255, 255, 0.9),
+    0 0 16px rgba(0, 255, 255, 0.7);
+  opacity: 0.8;
+  animation: float 18s linear infinite;
+}
+
+.particle:nth-child(3n) {
+  background: radial-gradient(circle, #fff 0, #ff6bcb 40%, transparent 70%);
+  box-shadow:
+    0 0 8px rgba(255, 107, 203, 0.9),
+    0 0 16px rgba(255, 107, 203, 0.7);
+  animation-duration: 26s;
+}
+
+.particle:nth-child(4n) {
+  background: radial-gradient(circle, #fff 0, #00f2fe 40%, transparent 70%);
+  box-shadow:
+    0 0 8px rgba(0, 242, 254, 0.9),
+    0 0 16px rgba(0, 242, 254, 0.7);
+  animation-duration: 32s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.2;
+  }
+
+  20% { opacity: 0.9; }
+
+  50% {
+    transform: translate3d(40px, -120px, 0) scale(1.2);
+  }
+
+  100% {
+    transform: translate3d(-40px, -260px, 0) scale(0.8);
+    opacity: 0.1;
+  }
+}
+
+/* --- Wave --- */
+.wave-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  overflow: hidden;
+}
+
+.wave-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 0 25px rgba(0,255,255,0.7));
 }

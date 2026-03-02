@@ -1,0 +1,26 @@
+<div class="scene">
+    <div class="particles" id="particles"></div>
+
+    <div class="wave-wrap">
+        <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#4facfe" />
+                    <stop offset="50%" stop-color="#00f2fe" />
+                    <stop offset="100%" stop-color="#ff6bcb" />
+                </linearGradient>
+            </defs>
+
+            <path fill="url(#neonGradient)">
+                <animate attributeName="d" dur="18s" repeatCount="indefinite" values="
+                        M0,120 C300,200 900,40 1200,120 V200 H0 Z;
+                        M0,140 C300,180 900,20 1200,100 V200 H0 Z;
+                        M0,110 C300,210 900,30 1200,130 V200 H0 Z;
+                        M0,120 C300,200 900,40 1200,120 V200 H0 Z
+                    " />
+            </path>
+        </svg>
+    </div>
+</div>
+
+<script defer src="{{ '/assets/js/background.js' | relative_url }}"></script>

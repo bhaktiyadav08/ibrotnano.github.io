@@ -12,6 +12,9 @@ social:
     - https://github.com/iBrotNano
     - https://www.linkedin.com/in/marcel-melzig-0aa538ab/
 
+include:
+  - background
+
 markdown: kramdown
 kramdown:
   input: GFM
