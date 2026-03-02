@@ -4,26 +4,28 @@
     <div class="wave-wrap">
         <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
             <defs>
-                <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <radialGradient id="planetDark" cx="50%" cy="30%" r="85%">
+                    <stop offset="0%" stop-color="#111722" />
+                    <stop offset="60%" stop-color="#06090f" />
+                    <stop offset="100%" stop-color="#020306" />
+                </radialGradient>
+
+                <radialGradient id="neonGradient" cx="50%" cy="50%" r="85%">
                     <stop offset="0%" stop-color="#4facfe" />
                     <stop offset="50%" stop-color="#00f2fe" />
                     <stop offset="100%" stop-color="#ff6bcb" />
-                </linearGradient>
+                </radialGradient>
             </defs>
 
-            <ellipse cx="600" cy="240" rx="760" ry="148" fill="url(#neonGradient)">
+            <ellipse cx="600" cy="240" rx="580" ry="125" fill="url(#neonGradient)" opacity="1.0">
+                <animate attributeName="opacity" dur="300s" repeatCount="indefinite" values="1.0;0.1;1.0" />
+            </ellipse>
+
+            <ellipse cx="600" cy="240" rx="600" ry="115" fill="url(#planetDark)">
                 <animate attributeName="cy" dur="18s" repeatCount="indefinite" values="240;234;246;240" />
             </ellipse>
 
-            <ellipse cx="600" cy="238" rx="780" ry="162" fill="none" stroke="rgba(120, 245, 255, 0.42)"
-                stroke-width="16">
-                <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0.35;0.62;0.35" />
-            </ellipse>
 
-            <ellipse cx="600" cy="238" rx="805" ry="178" fill="none" stroke="rgba(255, 126, 214, 0.28)"
-                stroke-width="24">
-                <animate attributeName="opacity" dur="10s" repeatCount="indefinite" values="0.18;0.42;0.18" />
-            </ellipse>
         </svg>
     </div>
 </div>
