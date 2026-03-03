@@ -58,32 +58,48 @@ function createLayerCanvas(className) {
     return canvas;
 }
 
+function createDomParticle() {
+    const particle = document.createElement("div");
+    particle.className = "particle";
+
+    if (Math.random() < 0.5) {
+        particle.style.left = `${Math.random() * 30}vw`;
+    } else {
+        particle.style.left = `${70 + Math.random() * 30}vw`;
+    }
+
+    particle.style.top = `${Math.random() * 100}vh`;
+    particle.style.animationDelay = `${-Math.random() * SETTINGS.domParticles.maxNegativeDelaySeconds}s`;
+    return particle;
+}
+
+function getScaledDomParticleCount(factor) {
+    return clamp(
+        Math.floor(window.innerWidth / SETTINGS.domParticles.densityDivisor),
+        Math.max(1, Math.round(SETTINGS.domParticles.minCount * factor)),
+        Math.max(1, Math.round(SETTINGS.domParticles.maxCount * factor))
+    );
+}
+
 function generateBackgroundParticles() {
     const container = document.getElementById("particles");
-    if (!container || container.dataset.initialized === "true") return;
 
-    container.dataset.initialized = "true";
+    if (!container) return;
 
-    const particleCount = clamp(
-        Math.floor(window.innerWidth / SETTINGS.domParticles.densityDivisor),
-        SETTINGS.domParticles.minCount,
-        SETTINGS.domParticles.maxCount
-    );
+    const sync = (factor = 1) => {
+        const particleCount = getScaledDomParticleCount(factor);
 
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement("div");
-        particle.className = "particle";
-
-        if (Math.random() < 0.5) {
-            particle.style.left = `${Math.random() * 30}vw`;
-        } else {
-            particle.style.left = `${70 + Math.random() * 30}vw`;
+        while (container.childElementCount > particleCount) {
+            container.removeChild(container.lastElementChild);
         }
 
-        particle.style.top = `${Math.random() * 100}vh`;
-        particle.style.animationDelay = `${-Math.random() * SETTINGS.domParticles.maxNegativeDelaySeconds}s`;
-        container.appendChild(particle);
-    }
+        while (container.childElementCount < particleCount) {
+            container.appendChild(createDomParticle());
+        }
+    };
+
+    sync(1);
+    return { sync };
 }
 
 function setCanvasSize(canvases, context) {
@@ -112,7 +128,7 @@ function generateNebula(scene) {
         "rgba(255, 107, 203, 0.34)"
     ];
 
-    const nebulaClouds = Array.from({ length: SETTINGS.nebula.cloudCount }, () => ({
+    const createNebulaCloud = () => ({
         x: Math.random(),
         y: Math.random(),
         radius: randomBetween(SETTINGS.nebula.radiusMin, SETTINGS.nebula.radiusMax),
@@ -121,7 +137,21 @@ function generateNebula(scene) {
         driftY: randomBetween(SETTINGS.nebula.driftYMin, SETTINGS.nebula.driftYMax),
         phase: randomBetween(0, Math.PI * 2),
         color: colors[Math.floor(Math.random() * colors.length)]
-    }));
+    });
+
+    const nebulaClouds = Array.from({ length: SETTINGS.nebula.cloudCount }, createNebulaCloud);
+
+    const syncCloudCount = (factor = 1) => {
+        const targetCloudCount = Math.max(1, Math.round(SETTINGS.nebula.cloudCount * factor));
+
+        while (nebulaClouds.length > targetCloudCount) {
+            nebulaClouds.pop();
+        }
+
+        while (nebulaClouds.length < targetCloudCount) {
+            nebulaClouds.push(createNebulaCloud());
+        }
+    };
 
     setCanvasSize([nebulaCanvas], nebulaContext);
 
@@ -168,7 +198,11 @@ function generateNebula(scene) {
         setCanvasSize([nebulaCanvas], nebulaContext);
     };
 
-    return { draw, resize };
+    const setFactor = (factor = 1) => {
+        syncCloudCount(factor);
+    };
+
+    return { draw, resize, setFactor };
 }
 
 function generateConstellation(scene) {
@@ -252,17 +286,20 @@ function generateConstellation(scene) {
 function initBackground() {
     const scene = document.querySelector(".scene");
     const freezeToggle = document.getElementById("freeze-toggle");
+    const densityFactorSlider = document.getElementById("density-factor");
+    const densityFactorValue = document.getElementById("density-factor-value");
     const sceneSvg = scene ? scene.querySelector("svg") : null;
     if (!scene || scene.dataset.initialized === "true") return;
     scene.dataset.initialized = "true";
 
-    generateBackgroundParticles();
+    const domParticlesLayer = generateBackgroundParticles();
     const nebulaLayer = generateNebula(scene);
     const constellationLayer = generateConstellation(scene);
 
-    if (!nebulaLayer || !constellationLayer) return;
+    if (!domParticlesLayer || !nebulaLayer || !constellationLayer) return;
 
     let isFrozen = true;
+    let intensityFactor = 2;
     let animationFrameId;
 
     const animate = (time) => {
@@ -301,9 +338,25 @@ function initBackground() {
         }
     };
 
+    const applyIntensityFactor = (factor) => {
+        intensityFactor = factor;
+        domParticlesLayer.sync(intensityFactor);
+        nebulaLayer.setFactor(intensityFactor);
+
+        if (densityFactorValue) {
+            densityFactorValue.textContent = `${intensityFactor.toFixed(1)}x`;
+        }
+
+        if (isFrozen) {
+            nebulaLayer.draw(0);
+            constellationLayer.draw();
+        }
+    };
+
     window.addEventListener(
         "resize",
         () => {
+            domParticlesLayer.sync(intensityFactor);
             nebulaLayer.resize();
             constellationLayer.resize();
         },
@@ -316,6 +369,14 @@ function initBackground() {
         });
     }
 
+    if (densityFactorSlider) {
+        densityFactorSlider.addEventListener("input", () => {
+            const factor = clamp(Number(densityFactorSlider.value) || 1, 1, 3);
+            applyIntensityFactor(factor);
+        });
+    }
+
+    applyIntensityFactor(2);
     nebulaLayer.draw(0);
     constellationLayer.draw();
     setFrozenState(true);

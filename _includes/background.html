@@ -30,9 +30,17 @@
     </div>
 </div>
 
-<button class="freeze-toggle" id="freeze-toggle" type="button" aria-label="Animationen starten oder stoppen"
-    aria-pressed="true" title="Animationen starten oder stoppen">
-    <span class="freeze-glyph" aria-hidden="true">Q</span>
-</button>
+<div class="bg-controls">
+    <button class="freeze-toggle" id="freeze-toggle" type="button" aria-label="Animationen starten oder stoppen"
+        aria-pressed="true" title="Animationen starten oder stoppen">
+        <span class="freeze-glyph" aria-hidden="true">Q</span>
+    </button>
+
+    <label class="density-slider-wrap" for="density-factor" aria-label="Faktor für Partikel und Wolken">
+        <input id="density-factor" class="density-slider" type="range" min="1" max="3" step="0.1" value="2"
+            title="Faktor für domParticles und cloudCount" />
+        <span id="density-factor-value" class="density-slider-value" aria-hidden="true">1.0x</span>
+    </label>
+</div>
 
 <script defer src="{{ '/assets/js/background.js' | relative_url }}"></script>

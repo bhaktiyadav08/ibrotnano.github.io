@@ -556,11 +556,20 @@ blockquote {
     pointer-events: none;
 }
 
-.freeze-toggle {
+.bg-controls {
     position: fixed;
     right: 0.85rem;
     bottom: 0.85rem;
     z-index: 8;
+    display: flex;
+    align-items: center;
+    gap: 0.42rem;
+    pointer-events: auto;
+}
+
+.freeze-toggle {
+    position: relative;
+    z-index: 1;
     width: 1.2rem;
     height: 1.2rem;
     padding: 0;
@@ -574,6 +583,39 @@ blockquote {
     box-shadow: 0 0 8px rgba(0, 242, 254, 0.24), inset 0 0 6px rgba(0, 242, 254, 0.18);
     transition: opacity 0.2s ease, transform 0.2s ease;
     isolation: isolate;
+}
+
+.density-slider-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.38rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    background: rgba(0, 10, 14, 0.28);
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.15), inset 0 0 6px rgba(0, 242, 254, 0.1);
+    opacity: 0.24;
+    transition: opacity 0.2s ease;
+}
+
+.density-slider-wrap:hover,
+.density-slider-wrap:focus-within {
+    opacity: 0.72;
+}
+
+.density-slider {
+    width: 4.4rem;
+    height: 0.2rem;
+    margin: 0;
+    accent-color: rgb(0, 242, 254);
+}
+
+.density-slider-value {
+    min-width: 2.2rem;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 0.66rem;
+    color: rgba(0, 242, 254, 0.9);
+    letter-spacing: 0.02em;
 }
 
 .freeze-toggle:hover,
