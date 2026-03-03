@@ -4,49 +4,43 @@ function clamp(value, min, max) {
 
 const SETTINGS = {
     domParticles: {
-        densityDivisor: 1.8,
-        minCount: 320,
-        maxCount: 1000,
+        densityDivisor: 1.618,
+        minCount: 1,
+        maxCount: 16,
         maxNegativeDelaySeconds: 20
     },
     nebula: {
-        cloudCount: 32,
-        radiusMin: 260,
-        radiusMax: 760,
+        cloudCount: 16,
+        radiusMin: 50,
+        radiusMax: 50 * 10 * 1.618,
         depthMin: 0.2,
         depthMax: 1.0,
         driftXMin: -0.08,
         driftXMax: 0.08,
         driftYMin: -0.06,
         driftYMax: 0.06,
-        parallaxX: 46,
-        parallaxY: 34,
         oscillationX: 24,
         oscillationY: 18,
-        driftTimeFactor: 0.02
+        driftTimeFactor: 0.01618
     },
     constellation: {
-        densityDivisor: 18,
-        minCount: 55,
-        maxCount: 110,
-        speedXMin: -0.00018,
-        speedXMax: 0.00018,
-        speedYMin: -0.00015,
-        speedYMax: 0.00015,
+        densityDivisor: 10 * 1.618,
+        minCount: 42,
+        maxCount: 42 * 1.618,
+        speedXMin: -0.000018,
+        speedXMax: 0.000018,
+        speedYMin: -0.000015,
+        speedYMax: 0.000015,
         depthMin: 0.25,
         depthMax: 1.0,
-        sizeMin: 1.8,
-        sizeMax: 5.2,
-        motionParallaxX: 0.00003,
-        motionParallaxY: 0.000024,
-        drawParallaxX: 14,
-        drawParallaxY: 10,
+        sizeMin: 0.8,
+        sizeMax: 3.2,
         wrapMargin: 0.05,
-        linkDistance: 140,
-        linkBaseAlpha: 0.28,
+        linkDistance: 162,
+        linkBaseAlpha: 0.50,
         dotBaseAlpha: 0.24,
         dotDepthAlpha: 0.42,
-        lineBaseWidth: 0.6,
+        lineBaseWidth: 0.9,
         lineDepthWidth: 0.35
     },
     canvas: {
@@ -69,6 +63,7 @@ function generateBackgroundParticles() {
     if (!container || container.dataset.initialized === "true") return;
 
     container.dataset.initialized = "true";
+
     const particleCount = clamp(
         Math.floor(window.innerWidth / SETTINGS.domParticles.densityDivisor),
         SETTINGS.domParticles.minCount,
@@ -78,29 +73,38 @@ function generateBackgroundParticles() {
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement("div");
         particle.className = "particle";
-        particle.style.left = `${Math.random() * 100}vw`;
+
+        if (Math.random() < 0.5) {
+            particle.style.left = `${Math.random() * 30}vw`;
+        } else {
+            particle.style.left = `${70 + Math.random() * 30}vw`;
+        }
+
         particle.style.top = `${Math.random() * 100}vh`;
         particle.style.animationDelay = `${-Math.random() * SETTINGS.domParticles.maxNegativeDelaySeconds}s`;
         container.appendChild(particle);
     }
 }
 
-function initBackground() {
-    const scene = document.querySelector(".scene");
-    if (!scene || scene.dataset.initialized === "true") return;
-    scene.dataset.initialized = "true";
+function setCanvasSize(canvases, context) {
+    const { innerWidth, innerHeight, devicePixelRatio } = window;
+    const dpr = clamp(devicePixelRatio || 1, 1, SETTINGS.canvas.maxDpr);
 
-    generateBackgroundParticles();
+    for (const canvas of canvases) {
+        canvas.width = Math.floor(innerWidth * dpr);
+        canvas.height = Math.floor(innerHeight * dpr);
+        canvas.style.width = `${innerWidth}px`;
+        canvas.style.height = `${innerHeight}px`;
+    }
 
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function generateNebula(scene) {
     const nebulaCanvas = createLayerCanvas("nebula-layer");
-    const constellationCanvas = createLayerCanvas("constellation-layer");
-
     scene.appendChild(nebulaCanvas);
-    scene.appendChild(constellationCanvas);
-
     const nebulaContext = nebulaCanvas.getContext("2d", { alpha: true });
-    const constellationContext = constellationCanvas.getContext("2d", { alpha: true });
-    if (!nebulaContext || !constellationContext) return;
+    if (!nebulaContext) return;
 
     const colors = [
         "rgba(79, 172, 254, 0.55)",
@@ -119,38 +123,9 @@ function initBackground() {
         color: colors[Math.floor(Math.random() * colors.length)]
     }));
 
-    const particleCount = clamp(
-        Math.floor(window.innerWidth / SETTINGS.constellation.densityDivisor),
-        SETTINGS.constellation.minCount,
-        SETTINGS.constellation.maxCount
-    );
-    const particles = Array.from({ length: particleCount }, () => ({
-        x: Math.random(),
-        y: Math.random(),
-        vx: randomBetween(SETTINGS.constellation.speedXMin, SETTINGS.constellation.speedXMax),
-        vy: randomBetween(SETTINGS.constellation.speedYMin, SETTINGS.constellation.speedYMax),
-        depth: randomBetween(SETTINGS.constellation.depthMin, SETTINGS.constellation.depthMax),
-        size: randomBetween(SETTINGS.constellation.sizeMin, SETTINGS.constellation.sizeMax)
-    }));
+    setCanvasSize([nebulaCanvas], nebulaContext);
 
-    const setCanvasSize = () => {
-        const { innerWidth, innerHeight, devicePixelRatio } = window;
-        const dpr = clamp(devicePixelRatio || 1, 1, SETTINGS.canvas.maxDpr);
-
-        for (const canvas of [nebulaCanvas, constellationCanvas]) {
-            canvas.width = Math.floor(innerWidth * dpr);
-            canvas.height = Math.floor(innerHeight * dpr);
-            canvas.style.width = `${innerWidth}px`;
-            canvas.style.height = `${innerHeight}px`;
-        }
-
-        nebulaContext.setTransform(dpr, 0, 0, dpr, 0, 0);
-        constellationContext.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-
-    setCanvasSize();
-
-    const drawNebula = (time) => {
+    const draw = (time) => {
         const width = window.innerWidth;
         const height = window.innerHeight;
         nebulaContext.clearRect(0, 0, width, height);
@@ -189,7 +164,37 @@ function initBackground() {
         nebulaContext.globalCompositeOperation = "source-over";
     };
 
-    const drawConstellation = () => {
+    const resize = () => {
+        setCanvasSize([nebulaCanvas], nebulaContext);
+    };
+
+    return { draw, resize };
+}
+
+function generateConstellation(scene) {
+    const constellationCanvas = createLayerCanvas("constellation-layer");
+    scene.appendChild(constellationCanvas);
+    const constellationContext = constellationCanvas.getContext("2d", { alpha: true });
+    if (!constellationContext) return;
+
+    const particleCount = clamp(
+        Math.floor(window.innerWidth / SETTINGS.constellation.densityDivisor),
+        SETTINGS.constellation.minCount,
+        SETTINGS.constellation.maxCount
+    );
+
+    const particles = Array.from({ length: particleCount }, () => ({
+        x: Math.random(),
+        y: Math.random(),
+        vx: randomBetween(SETTINGS.constellation.speedXMin, SETTINGS.constellation.speedXMax),
+        vy: randomBetween(SETTINGS.constellation.speedYMin, SETTINGS.constellation.speedYMax),
+        depth: randomBetween(SETTINGS.constellation.depthMin, SETTINGS.constellation.depthMax),
+        size: randomBetween(SETTINGS.constellation.sizeMin, SETTINGS.constellation.sizeMax)
+    }));
+
+    setCanvasSize([constellationCanvas], constellationContext);
+
+    const draw = () => {
         const width = window.innerWidth;
         const height = window.innerHeight;
         const positions = [];
@@ -237,13 +242,38 @@ function initBackground() {
         }
     };
 
+    const resize = () => {
+        setCanvasSize([constellationCanvas], constellationContext);
+    };
+
+    return { draw, resize };
+}
+
+function initBackground() {
+    const scene = document.querySelector(".scene");
+    if (!scene || scene.dataset.initialized === "true") return;
+    scene.dataset.initialized = "true";
+
+    generateBackgroundParticles();
+    const nebulaLayer = generateNebula(scene);
+    const constellationLayer = generateConstellation(scene);
+
+    if (!nebulaLayer || !constellationLayer) return;
+
     const animate = (time) => {
-        drawNebula(time);
-        drawConstellation();
+        nebulaLayer.draw(time);
+        constellationLayer.draw();
         window.requestAnimationFrame(animate);
     };
 
-    window.addEventListener("resize", setCanvasSize, { passive: true });
+    window.addEventListener(
+        "resize",
+        () => {
+            nebulaLayer.resize();
+            constellationLayer.resize();
+        },
+        { passive: true }
+    );
     window.requestAnimationFrame(animate);
 }
 
