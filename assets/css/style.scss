@@ -556,6 +556,72 @@ blockquote {
     pointer-events: none;
 }
 
+.freeze-toggle {
+    position: fixed;
+    right: 0.85rem;
+    bottom: 0.85rem;
+    z-index: 8;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 242, 254, 0.5);
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.42) 0%, rgba(0, 242, 254, 0.18) 45%, rgba(0, 242, 254, 0.02) 100%);
+    color: rgba(0, 242, 254, 0.9);
+    opacity: 0.2;
+    pointer-events: auto;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.24), inset 0 0 6px rgba(0, 242, 254, 0.18);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    isolation: isolate;
+}
+
+.freeze-toggle:hover,
+.freeze-toggle:focus-visible {
+    opacity: 0.72;
+    transform: translateY(-0.5px);
+}
+
+.freeze-toggle .freeze-glyph {
+    display: none;
+}
+
+.freeze-toggle::after {
+    content: "";
+    position: absolute;
+    inset: -0.35rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 242, 254, 0.45);
+    opacity: 0;
+    transform: scale(0.65);
+    pointer-events: none;
+}
+
+.freeze-toggle:hover::after,
+.freeze-toggle:focus-visible::after {
+    animation: cyan-pulse 1.05s ease-out infinite;
+}
+
+.freeze-toggle[aria-pressed="false"] {
+    opacity: 0.36;
+}
+
+@keyframes cyan-pulse {
+    0% {
+        opacity: 0.55;
+        transform: scale(0.72);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.38);
+    }
+}
+
+.animations-frozen .particle,
+.animations-frozen .blinking-cursor {
+    animation-play-state: paused !important;
+}
+
 .bg-layer {
     position: absolute;
     inset: 0;

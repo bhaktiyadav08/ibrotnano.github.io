@@ -251,6 +251,8 @@ function generateConstellation(scene) {
 
 function initBackground() {
     const scene = document.querySelector(".scene");
+    const freezeToggle = document.getElementById("freeze-toggle");
+    const sceneSvg = scene ? scene.querySelector("svg") : null;
     if (!scene || scene.dataset.initialized === "true") return;
     scene.dataset.initialized = "true";
 
@@ -260,10 +262,43 @@ function initBackground() {
 
     if (!nebulaLayer || !constellationLayer) return;
 
+    let isFrozen = true;
+    let animationFrameId;
+
     const animate = (time) => {
+        if (isFrozen) return;
         nebulaLayer.draw(time);
         constellationLayer.draw();
-        window.requestAnimationFrame(animate);
+        animationFrameId = window.requestAnimationFrame(animate);
+    };
+
+    const setFrozenState = (frozen) => {
+        isFrozen = frozen;
+        document.body.classList.toggle("animations-frozen", frozen);
+
+        if (sceneSvg && typeof sceneSvg.pauseAnimations === "function") {
+            if (frozen) {
+                sceneSvg.pauseAnimations();
+            } else {
+                sceneSvg.unpauseAnimations();
+            }
+        }
+
+        if (freezeToggle) {
+            freezeToggle.setAttribute("aria-pressed", String(frozen));
+        }
+
+        if (frozen) {
+            if (animationFrameId) {
+                window.cancelAnimationFrame(animationFrameId);
+                animationFrameId = undefined;
+            }
+            return;
+        }
+
+        if (!animationFrameId) {
+            animationFrameId = window.requestAnimationFrame(animate);
+        }
     };
 
     window.addEventListener(
@@ -274,7 +309,16 @@ function initBackground() {
         },
         { passive: true }
     );
-    window.requestAnimationFrame(animate);
+
+    if (freezeToggle) {
+        freezeToggle.addEventListener("click", () => {
+            setFrozenState(!isFrozen);
+        });
+    }
+
+    nebulaLayer.draw(0);
+    constellationLayer.draw();
+    setFrozenState(true);
 }
 
 if (document.readyState === "loading") {
