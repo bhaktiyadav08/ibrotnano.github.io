@@ -1,85 +1,56 @@
-# Jekyll Blog (Monokai Dark)
+# Jekyll Blog (Neon Funky Space Theme)
 
-Dieses Repository enthält ein vollständiges Tech-Blog, optimiert für GitHub Pages.
+This repository contains a complete tech blog, optimized for GitHub Pages. I use this theme on [Blog · iBrotNano](https://ibrotnano.github.io/). Feel free to inspect, adapt or use it for own blogs.
 
 ## Features
 
-- Dunkles Monokai-inspiriertes Theme
-- Artikel-Liste mit Datum und Kategorien auf der Startseite
-- Archivseite nach Jahr
-- Kategorienseite mit allen Posts je Kategorie
-- Syntax Highlighting über Rouge
-- Copy-Button für Codeblöcke
-- Mermaid-Diagramme in Markdown (```mermaid)
-- SEO-Metadaten + Sitemap für bessere Auffindbarkeit
-- Eigene 404-Seite
-- Automatisches Deployment per GitHub Actions
+- Dark neon space theme
+- Article list with date and categories on the homepage
+- Archive page by year
+- Category page with all posts per category
+- Syntax highlighting via Rouge
+- Copy button for code blocks
+- Mermaid diagrams in Markdown (```mermaid)
+- SEO metadata + Sitemap for better discoverability
+- Custom 404 page
 
-## Lokal starten
+## Local Development with Docker
 
-Voraussetzungen: Ruby + Bundler
-
-```bash
-bundle install
-bundle exec jekyll serve
-```
-
-Dann öffnen: `http://127.0.0.1:4000`
-
-## Lokal starten ohne Ruby (Docker)
-
-Voraussetzungen: Docker Desktop
+Requirements: Docker Desktop
 
 ```bash
 docker compose up -d
 ```
 
-Dann öffnen: `http://127.0.0.1:4000`
+Then open: `http://localhost:4000`
 
-Stoppen:
+Stop the container with:
 
 ```bash
 docker compose down
 ```
 
-Hinweis: Live-Reload ist aktiv, Änderungen an Dateien werden automatisch neu gebaut.
+Note: Live-Reload is active, changes to files are automatically rebuilt.
 
-## Auf GitHub Pages veröffentlichen
+## Publishing on GitHub Pages
 
-1. Repository nach GitHub pushen.
-2. Standard-Branch `main` verwenden.
-3. In **Settings → Pages** bei **Build and deployment** die Quelle auf **GitHub Actions** setzen.
-4. Nach jedem Push auf `main` läuft `.github/workflows/pages.yml` und deployt automatisch.
+1. Push the repository to GitHub.
+2. Use the default branch `main`.
+3. In **Settings → Pages** set the source to **GitHub Actions** under **Build and deployment**.
+4. After each push to `main`, `.github/workflows/pages.yml` will run and deploy automatically.
 
-## PDF-Export (ohne lokale Ruby-Installation)
+## Creating New Articles
 
-Du kannst über GitHub Actions **alle** oder **einen einzelnen** Artikel als PDF exportieren:
-
-1. In GitHub auf **Actions** gehen.
-2. Workflow **Export Posts as PDF** auswählen.
-3. **Run workflow** klicken.
-4. Bei **export_mode** wählen:
-	- `all` → exportiert alle Posts
-	- `single` → exportiert genau einen Post
-5. Bei `single` zusätzlich `post_identifier` setzen, z. B.:
-	- Slug: `willkommen-im-blog`
-	- Dateiname: `2026-02-20-willkommen-im-blog.md`
-6. Nach Abschluss im Run unter **Artifacts** die Datei **blog-pdf-export** herunterladen.
-
-Der Workflow liegt in `.github/workflows/pdf-export.yml`.
-
-## Neue Artikel erstellen
-
-Datei unter `_posts/` mit Schema:
+File under `_posts/` with schema:
 
 `YYYY-MM-DD-title.md`
 
-Front Matter Beispiel:
+Front Matter example:
 
 ```yaml
 ---
-title: Mein Artikel
+title: My Article
 date: 2026-02-21 09:30:00 +0100
-categories: [python, architektur]
+categories: [python, architecture]
 ---
 ```
